@@ -208,3 +208,13 @@ printPostOrder(BSTNode<Key, E>* root, int level) const {
 	printPostOrder(root->right(), level + 1);  // Do right subtree
 	visit(root);						       // Print node value
 }
+
+// Print out a Post Order Traversal
+template <typename Key, typename E>
+void BST<Key, E>::
+printPostOrder(BSTNode<Key, E>* root, int level) const {
+    if (root == NULL) return;                  // Empty tree
+    printPostOrder(root->left(), level + 1);   // Do left subtree
+    printPostOrder(root->right(), level + 1);  // Do right subtree
+    visit(root);						       // Print node value
+}
