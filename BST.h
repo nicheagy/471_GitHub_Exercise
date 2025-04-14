@@ -33,6 +33,7 @@ private:
   E* findhelp(BSTNode<Key, E>*, const Key&) const;
   void printhelp(BSTNode<Key, E>*, int) const;
   void visit(BSTNode<Key, E>*) const;
+  void printPreOrder(BSTNode<Key, E>*, int) const;
 
 public:
   BST() { root = NULL; nodecount = 0; }  // Constructor
@@ -199,6 +200,7 @@ printhelp(BSTNode<Key, E>* root, int level) const {
 }
 
 
+
 // Print out a Post Order Traversal
 template <typename Key, typename E>
 void BST<Key, E>::
@@ -217,4 +219,14 @@ printPostOrder(BSTNode<Key, E>* root, int level) const {
     printPostOrder(root->left(), level + 1);   // Do left subtree
     printPostOrder(root->right(), level + 1);  // Do right subtree
     visit(root);						       // Print node value
+
+template <typename Key, typename E>
+void BST<Key, E>::
+printPreOrder(BSTNode<Key, E>* root, int level) const {
+  visit(root);
+  if (root->left() != NULL)
+    printPreOrder(root->left(), level+1);
+  if (root->right() != NULL)
+    printPreOrder(root->right(), level+1);
+
 }
