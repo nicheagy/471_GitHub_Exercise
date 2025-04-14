@@ -90,7 +90,13 @@ public:
 
   void print() const { // Print the contents of the BST
     if (root == NULL) cout << "The BST is empty.\n";
-    else printhelp(root, 0);
+    else {
+	    printhelp(root, 0);
+	    printPreOrder(root,0);
+	    cout << "PreOrder Traversal" << endl;
+	    printPostOrder(root,0);
+	    cout << "PostOrder Traversal" << endl;
+    }
   }
   
 };
@@ -211,15 +217,7 @@ printPostOrder(BSTNode<Key, E>* root, int level) const {
 	visit(root);						       // Print node value
 }
 
-// Print out a Post Order Traversal
-template <typename Key, typename E>
-void BST<Key, E>::
-printPostOrder(BSTNode<Key, E>* root, int level) const {
-    if (root == NULL) return;                  // Empty tree
-    printPostOrder(root->left(), level + 1);   // Do left subtree
-    printPostOrder(root->right(), level + 1);  // Do right subtree
-    visit(root);						       // Print node value
-
+// Print out a Pre Order Traversal
 template <typename Key, typename E>
 void BST<Key, E>::
 printPreOrder(BSTNode<Key, E>* root, int level) const {
